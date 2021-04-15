@@ -37,5 +37,5 @@ chown -R -H ubuntu:ubuntu /data/
 
 location="\tlocation /hbnb_static {\n\t\talias /data/web_static/current/;\n\t}"
 if [ $(grep 'location /hbnb_static' /etc/nginx/sites-enabled/default | wc -l) -eq 0 ]; then
-    sed -i "/server_name _;/a $location"
+    sed -i "/server_name _;/a $location" /etc/nginx/sites-enabled/default
 fi
