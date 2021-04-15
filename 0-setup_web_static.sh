@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# sets up the web static
 if ! [ -x "$(command -v nginx)" ]; then
     apt-get -y install nginx
 fi
