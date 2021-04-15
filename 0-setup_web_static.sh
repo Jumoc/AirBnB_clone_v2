@@ -31,8 +31,11 @@ echo "<html>
   </body>
 </html>" > /data/web_static/releases/test/index.html
 
-ln -sf /data/web_static/current /data/web_static/releases/test/
+ln -sf /data/web_static/releases/test/ /data/web_static/current
 
 chown -R -H ubuntu:ubuntu /data/
 
-#location=""
+location="\tlocation /hbnb_static {\n\t\talias /data/web_static/current/;\n\t}"
+if [ $(grep 'location /hbnb_static' /etc/nginx/sites-enabled/default | wc -l) -eq 0 ]; then
+    sed -i "/server_name _;/a $location"
+fi
