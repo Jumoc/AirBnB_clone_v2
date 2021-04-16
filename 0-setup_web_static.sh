@@ -24,20 +24,20 @@ if [[ ! (-d /data/web_static/releases/test/) ]]; then
     mkdir /data/web_static/releases/test/
 fi
 
-echo "<html>" > /data/web_static/releases/test/index.html
-echo "<head>" >> /data/web_static/releases/test/index.html
-echo "</head>" >> /data/web_static/releases/test/index.html
-echo "<body>" >> /data/web_static/releases/test/index.html
-echo "Holberton School" >> /data/web_static/releases/test/index.html
-echo "</body>" >> /data/web_static/releases/test/index.html
-echo "</html>" >> /data/web_static/releases/test/index.html
+echo "<html>
+  <head>
+  </head>
+  <body>
+    Holberton School
+  </body>
+</html>" > /data/web_static/releases/test/index.html
 
 ln -sf /data/web_static/releases/test/ /data/web_static/current
 
 chown -R ubuntu:ubuntu /data/
 
-location="\\\tlocation /hbnb_static {\n\t\talias /data/web_static/current/;\n\t}"
-if [ "$(grep -c 'location /hbnb_static' /etc/nginx/sites-enabled/default)" -eq 0 ]; then
+location="\\\tlocation /hbnb_static/ {\n\t\talias /data/web_static/current/;\n\t}"
+if [ "$(grep -c 'location /hbnb_static/' /etc/nginx/sites-enabled/default)" -eq 0 ]; then
     sed -i "/server_name _;/a $location" /etc/nginx/sites-enabled/default
 fi
 
