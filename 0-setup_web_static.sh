@@ -41,4 +41,4 @@ if [ "$(grep -c 'location /hbnb_static' /etc/nginx/sites-enabled/default)" -eq 0
     sed -i "/server_name _;/a $location" /etc/nginx/sites-enabled/default
 fi
 
-service nginx restart
+service nginx start
