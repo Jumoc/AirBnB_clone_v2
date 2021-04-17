@@ -43,13 +43,13 @@ def do_deploy(archive_path):
             filename, filename
             ))
         run("rm /tmp/{}.tgz".format(filename))
-        run("mv /data/web_static/releases/{}/web_static/*"
+        run("mv /data/web_static/releases/{}/web_static/* "
             "/data/web_static/releases/{}/".format(
                 filename
-                ))
+            ))
         run("rm -rf /data/web_static/releases/{}/web_static".format(filename))
         run("rm -rf /data/web_static/current")
-        run("ln -s /data/web_static/releases/{}"
+        run("ln -s /data/web_static/releases/{} "
             "/data/web_static/current".format(filename))
         print("New version deployed!")
         return True
