@@ -42,7 +42,7 @@ def do_deploy(archive_path):
         run("tar -zxf /tmp/{}.tgz -C /data/web_static/releases/{}".format(
             filename, filename
             ))
-        run("rm /tmp/{}".format(filename))
+        run("rm /tmp/{}.tgz".format(filename))
         run("mv /data/web_static/releases/{}/web_static/*"
             "/data/web_static/releases/{}/".format(
                 filename
