@@ -16,9 +16,9 @@ def do_pack():
             tarname
         ))
         local("tar -czvf versions/{} web_static".format(tarname))
-        print("web_static packed: versions/{}.tgz -> {}Bytes".format(
-            tarname, getsize("versions/{}.tgz".format(tarname))
+        print("web_static packed: versions/{} -> {}Bytes".format(
+            tarname, getsize("versions/{}".format(tarname))
         ))
-        return "versions/{}.tgz".format(tarname)
+        return "versions/{}".format(tarname)
     except:
         return None
