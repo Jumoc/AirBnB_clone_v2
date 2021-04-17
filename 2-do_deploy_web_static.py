@@ -5,6 +5,12 @@ from datetime import datetime
 from os.path import *
 
 
+env.hosts = [
+        '54.157.200.176',
+        '35.237.198.52',
+    ]
+
+
 def do_pack():
     """packs everything into versions"""
     local("mkdir -p versions")
@@ -28,11 +34,6 @@ def do_deploy(archive_path):
     """packs everything into versions"""
     if not exists(archive_path):
         return False
-
-    env.hosts = [
-        '54.157.200.176',
-        '35.237.198.52',
-    ]
     try:
         filename = str(archive_path).split("/")[-1]
         filename = filename.split(".")[0]
