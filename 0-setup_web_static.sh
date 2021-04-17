@@ -37,7 +37,7 @@ ln -sf /data/web_static/releases/test/ /data/web_static/current
 chown -R ubuntu:ubuntu /data/
 
 location="\\\tlocation /hbnb_static/ {\n\t\talias /data/web_static/current/;\n\t}"
-if [ "$(grep -c 'location /hbnb_static/' /etc/nginx/sites-available/default)" -eq 0 ]; then
+if [ "$(grep -c 'location /hbnb_static' /etc/nginx/sites-available/default)" -eq 0 ]; then
     sed -i "/listen 80 default_server;/a $location" /etc/nginx/sites-available/default
 fi
 
