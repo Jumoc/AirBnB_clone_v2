@@ -78,7 +78,7 @@ def do_clean(number=0):
     for f in l_paths:
         f = f.split("_")[-1].split(".")[0]
         dates.append(datetime.strptime(f, "%Y%m%d%H%M%S"))
-    dates.sort()
+    dates.sort(reverse=True)
     print(dates)
     return True
 
