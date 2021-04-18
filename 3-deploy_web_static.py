@@ -57,6 +57,7 @@ def do_deploy(archive_path):
     except:
         return False
 
+
 def deploy():
     """Full deploy of server"""
     path = do_pack()
