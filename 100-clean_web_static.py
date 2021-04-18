@@ -6,6 +6,7 @@ from os.path import *
 
 
 env.hosts = [
+        '54.157.200.176',
         '35.237.198.52',
     ]
 
@@ -68,7 +69,7 @@ def deploy():
 
 def do_clean(number=0):
     """Clean all files"""
-    paths = run("ls versions")
+    paths = local("ls versions", capture=True)
     l_paths = paths.split("/")
 
     dates = []
