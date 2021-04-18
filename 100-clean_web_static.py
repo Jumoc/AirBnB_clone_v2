@@ -84,7 +84,7 @@ def do_clean(number=0):
     dates.sort(reverse=True)
 
     for i in range(len(dates)):
-        if (i >= number):
+        if (i >= int(number)):
             datestring = dates[i].strftime("%Y%m%d%H%M%S")
             local("rm versions/web_static_{}.tgz".format(datestring))
 
