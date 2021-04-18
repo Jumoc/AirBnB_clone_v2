@@ -6,7 +6,6 @@ from os.path import *
 
 
 env.hosts = [
-        '54.157.200.176',
         '35.237.198.52',
     ]
 
