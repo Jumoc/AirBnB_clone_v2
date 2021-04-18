@@ -69,6 +69,9 @@ def deploy():
 
 def do_clean(number=0):
     """Clean all files"""
+    if int(number) == 0:
+        number = 1
+
     pathsLocal = local("ls versions", capture=True)
     pathsServer = run("ls /data/web_static/releases")
     s_paths = pathsServer.split("  ")
