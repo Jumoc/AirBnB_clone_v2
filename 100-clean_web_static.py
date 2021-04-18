@@ -71,11 +71,13 @@ def do_clean(number=0):
     """Clean all files"""
     paths = local("ls versions", capture=True)
     l_paths = paths.split("/")
+    print(l_paths)
 
     dates = []
     for f in l_paths:
         f = f.split("_")[-1].split(".")[0]
         dates.append(datetime.strptime(f, "%Y%m%d%H%M%S"))
+    dates.sort()
     print(dates)
     return True
 
