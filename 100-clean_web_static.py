@@ -85,8 +85,8 @@ def do_clean(number=0):
 
     s_dates = []
     for f in s_paths:
-        if "_" in f and "." in f:
-            f = f.split("_")[-1].split(".")[0]
+        if "_" in f:
+            f = f.split("_")[-1]
             s_dates.append(datetime.strptime(f, "%Y%m%d%H%M%S"))
     s_dates.sort(reverse=True)
 
