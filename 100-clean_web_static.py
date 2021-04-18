@@ -69,22 +69,31 @@ def deploy():
 
 def do_clean(number=0):
     """Clean all files"""
-    print(type(number))
     pathsLocal = local("ls versions", capture=True)
     pathsServer = run("ls /data/web_static/releases")
-    s_paths = pathsServer.split("\n")
+    s_paths = pathsServer.split("  ")
     l_paths = pathsLocal.split("\n")
-    print("l_paths", l_paths)
-    print("s_paths", s_paths)
 
-    dates = []
+    l_dates = []
     for f in l_paths:
         f = f.split("_")[-1].split(".")[0]
-        dates.append(datetime.strptime(f, "%Y%m%d%H%M%S"))
-    dates.sort(reverse=True)
+        l_dates.append(datetime.strptime(f, "%Y%m%d%H%M%S"))
+    l_dates.sort(reverse=True)
 
-    for i in range(len(dates)):
+    s_dates = []
+    for f in s_paths:
+        if "_" in f and "." in f:
+            f = f.split("_")[-1].split(".")[0]
+            s_dates.append(datetime.strptime(f, "%Y%m%d%H%M%S"))
+    s_dates.sort(reverse=True)
+
+    for i in range(len(l_dates)):
         if (i >= int(number)):
-            datestring = dates[i].strftime("%Y%m%d%H%M%S")
+            datestring = l_dates[i].strftime("%Y%m%d%H%M%S")
             local("rm versions/web_static_{}.tgz".format(datestring))
+
+    for i in range(len(s_dates)):
+        if (i >= int(number)):
+            datestring = s_dates[i].strftime("%Y%m%d%H%M%S")
+            run("rm versions/web_static_{}.tgz".format(datestring))
 
