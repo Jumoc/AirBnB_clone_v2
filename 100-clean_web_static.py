@@ -71,7 +71,7 @@ def do_clean(number=0):
     """Clean all files"""
     paths = local("ls versions", capture=True)
     print("paths", paths)
-    l_paths = paths.split("/")
+    l_paths = paths.split("\n")
     print("l_paths", l_paths)
 
     dates = []
