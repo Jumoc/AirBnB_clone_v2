@@ -98,4 +98,4 @@ def do_clean(number=0):
     for i in range(len(s_dates)):
         if (i >= int(number)):
             datestring = s_dates[i].strftime("%Y%m%d%H%M%S")
-            run("rm -rf versions/web_static_{}".format(datestring))
+            run("rm -rf /data/web_static/releases/web_static_{}".format(datestring))
