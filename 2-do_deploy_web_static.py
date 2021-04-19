@@ -45,7 +45,7 @@ def do_deploy(archive_path):
         run("rm /tmp/{}.tgz".format(filename))
 
         run("mv /data/web_static/releases/{}/web_static/* "
-            "/data/web_static/releases/{}/".format(
+            "/data/web_static/releases/{}".format(
                 filename, filename
             ))
         run("rm -rf /data/web_static/releases/{}/web_static".format(filename))
