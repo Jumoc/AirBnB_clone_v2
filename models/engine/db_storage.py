@@ -95,3 +95,7 @@ class DBStorage:
             bind=type(self).__engine, expire_on_commit=False)
         Session = scoped_session(session_factory)
         type(self).__session = Session()
+
+    def close(self):
+        """Closes the session"""
+        self.__session.close()
