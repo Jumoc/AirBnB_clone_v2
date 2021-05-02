@@ -13,7 +13,9 @@ class FileStorage:
         obj_filtered = dict()
         if cls is not None:
             for key, value in type(self).__objects.items():
-                if value.__class__ == cls:
+                if type(cls) is not str:
+                    cls = cls.__name__
+                if value.__class__.__name__ == cls:
                     obj_filtered[key] = value
             return obj_filtered
         else:
