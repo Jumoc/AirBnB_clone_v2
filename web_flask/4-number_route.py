@@ -6,6 +6,7 @@ from flask import Flask
 app = Flask(__name__)
 app.url_map.strict_slashes = False
 
+
 @app.route('/')
 def hello_hbnb():
     return 'Hello HBNB!'
@@ -22,7 +23,7 @@ def c_text(text):
     return 'C {}'.format(text)
 
 
-@app.route('/python/<text>)
+@app.route('/python/<text>')
 @app.route('/python/')
 def python_text(text='is cool'):
     text = text.replace('_', ' ')
