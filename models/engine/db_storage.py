@@ -60,6 +60,8 @@ class DBStorage:
         # filter
         object_dict = dict()
         if cls:
+            if type(cls) is not str:
+                cls = cls.__name__
             result = type(self).__session.query(classes[cls]).all()
             for item in result:
                 key = item.__class__.__name__ + '.' + item.id
