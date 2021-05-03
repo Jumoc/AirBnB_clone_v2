@@ -17,13 +17,8 @@ def cleanup_storage(e):
 @app.route('/cities_by_states')
 def list_states():
     states = storage.all(State)
-    l_states = [value for value in states.values()]
-    cities = []
-    for states in l_states:
-        cities += states.cities
     return render_template(
-        '8-cities_by_states.html', states=l_states,
-        cities=cities
+        '8-cities_by_states.html', states=[value for value in states.values()]
         )
 
 
