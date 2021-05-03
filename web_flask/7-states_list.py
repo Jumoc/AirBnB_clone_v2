@@ -17,7 +17,9 @@ def cleanup_storage(e):
 @app.route('/states_list')
 def list_states():
     states = storage.all(State)
-    return render_template('7-states_list.html', states=[value for value in states.values()])
+    return render_template(
+        '7-states_list.html', states=[value for value in states.values()]
+        )
 
 
 if __name__ == '__main__':
