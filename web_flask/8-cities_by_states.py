@@ -17,11 +17,14 @@ def cleanup_storage(e):
 @app.route('/cities_by_states')
 def list_states():
     states = storage.all(State)
-    for state in states.values():
-        print(state.cities)
-    # return render_template(
-    #    '7-states_list.html', states=[value for value in states.values()]
-    #    )
+    l_states = [value for value in states.values()]
+    cities = []
+    for states in l_states:
+        cities += states.cities
+    return render_template(
+        '8-cities_by_states.html', states=l_states,
+        cities=cities
+        )
 
 
 if __name__ == '__main__':
