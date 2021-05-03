@@ -10,14 +10,14 @@ app.url_map.strict_slashes = False
 
 
 @app.teardown_appcontext
-def cleanup_storage():
+def cleanup_storage(e):
     storage.close()
 
 
 @app.route('/states_list')
 def list_states():
     states = storage.all(State)
-    return render_template('7-states_list.html', states=states)
+    return render_template('7-states_list.html', states=[value for value in states.values()])
 
 
 if __name__ == '__main__':
